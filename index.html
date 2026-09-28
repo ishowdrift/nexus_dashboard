@@ -1,18 +1,73 @@
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="en" class="dark" style="background-color: #080A0E; color: #E2E8F0;">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="NEXUS — Premium Freelancer Business Dashboard & Creative Studio Mini CRM for managing leads, clients, projects, proposals, payments, and tasks." />
-    <meta name="theme-color" content="#0B0D11" />
+    <meta name="theme-color" content="#080A0E" />
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%230B0D11'/><path d='M30 70V30L70 70V30' stroke='%2310B981' stroke-width='10' stroke-linecap='round' stroke-linejoin='round'/></svg>" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <title>NEXUS — Studio OS & Freelancer Business Intelligence</title>
+    <style>
+      html, body {
+        background-color: #080A0E !important;
+        color: #E2E8F0 !important;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      }
+      #protocol-fallback {
+        display: none;
+        min-height: 100vh;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        box-sizing: border-box;
+      }
+    </style>
   </head>
-  <body class="bg-[#0B0D11] text-[#E2E8F0] antialiased selection:bg-emerald-500/20 selection:text-emerald-300">
-    <div id="root"></div>
+  <body style="background-color: #080A0E; color: #E2E8F0;" class="bg-[#080A0E] text-[#E2E8F0] antialiased selection:bg-emerald-500/20 selection:text-emerald-300">
+    <div id="root">
+      <!-- Fallback container if opened as file:/// instead of http://localhost:5173 -->
+      <div id="protocol-fallback">
+        <div style="max-width: 540px; width: 100%; background: #0E131B; border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 32px; box-shadow: 0 25px 60px rgba(0,0,0,0.8); text-align: center;">
+          <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #10B981, #06B6D4); border-radius: 14px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; color: #080A0E; font-weight: 900; font-size: 24px; box-shadow: 0 0 20px rgba(16,185,129,0.4);">
+            ✦
+          </div>
+          <h2 style="color: #FFFFFF; font-size: 20px; font-weight: 700; margin: 0 0 8px; letter-spacing: -0.02em;">
+            Open NEXUS on Localhost
+          </h2>
+          <p style="color: #94A3B8; font-size: 13px; line-height: 1.6; margin: 0 0 24px;">
+            You opened <code style="background: rgba(255,255,255,0.06); padding: 2px 6px; border-radius: 6px; font-family: monospace; color: #34D399;">index.html</code> directly from your file explorer (<code style="color: #F59E0B;">file://</code>). Web applications require a local dev server to execute React and TypeScript modules.
+          </p>
+
+          <a href="http://localhost:5173" id="launch-link" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #10B981; color: #050608; font-weight: 600; font-size: 14px; padding: 12px 28px; border-radius: 12px; text-decoration: none; box-shadow: 0 0 20px rgba(16,185,129,0.35); transition: all 0.2s;">
+            Launch Dashboard (http://localhost:5173) →
+          </a>
+
+          <div style="margin-top: 24px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.06); color: #64748B; font-size: 11px; font-family: monospace;">
+            Server active on port 5173
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Handle direct file:// opens gracefully
+      if (window.location.protocol === 'file:') {
+        var fallback = document.getElementById('protocol-fallback');
+        if (fallback) {
+          fallback.style.display = 'flex';
+        }
+        // Auto-redirect to local server after a brief moment
+        setTimeout(function() {
+          window.location.href = 'http://localhost:5173';
+        }, 300);
+      }
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
